@@ -26,13 +26,13 @@ void draw(){
   // draw hour-circle
   stroke(120,0,200);
   arc(width/2, height/2, width - hourPadding, height - hourPadding, 0 - HALF_PI,
-  map(hour(), 0, 23, (float)0, TWO_PI - PI/12) - HALF_PI
+  map(hour()%12, 0, 11, (float)0, TWO_PI - PI/6) - HALF_PI
   );
   // draw hour-arrow
   hourMultiplier = 0.9*(width/2 - hourPadding);
   line(width/2, height/2, 
-  hourMultiplier*(float)Math.cos(map(hour(), 0, 23, (float)0, TWO_PI - PI/12) - HALF_PI) + width/2 ,
-  hourMultiplier*(float)Math.sin(map(hour(), 0, 23, (float)0, TWO_PI - PI/12) - HALF_PI) + height/2
+  hourMultiplier*(float)Math.cos(map(hour()%12, 0, 11, (float)0, TWO_PI - PI/6) - HALF_PI) + width/2 ,
+  hourMultiplier*(float)Math.sin(map(hour()%12, 0, 11, (float)0, TWO_PI - PI/6) - HALF_PI) + height/2
   );
   
   //draw minute-circle
