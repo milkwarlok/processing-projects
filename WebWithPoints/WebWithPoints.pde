@@ -40,7 +40,17 @@ void draw(){
           }
         }
     }
-
+    for(int i = 0; i < points.size(); i++){
+        Point ip = points.get(i);
+        float actualDistance = dist(ip.location.x, ip.location.y, mouseX, mouseY);
+        float expectedDistance = connectionDistance;
+        if(actualDistance < expectedDistance){
+            strokeWeight(map(actualDistance, 0, expectedDistance, 10, 1));
+            stroke(255,map(actualDistance, 0, expectedDistance, 255, 0), 255);
+            line(ip.location.x, ip.location.y,  mouseX, mouseY);
+        }
+    }
+    
 }
 
 
