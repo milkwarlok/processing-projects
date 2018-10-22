@@ -47,5 +47,4 @@ void mouseDragged()
 {
   mouseShiftX += pmouseX - mouseX;
   mouseShiftY += pmouseY - mouseY;
-  println(mouseShiftX);
 }
