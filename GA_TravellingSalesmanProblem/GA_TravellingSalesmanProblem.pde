@@ -17,21 +17,7 @@ import processing.event.MouseEvent;
   
   void setup(){
         size(400, 300);
-        initialPath = new Path(this);
-          for(int i = 0; i < width/columnWidth; i++){
-          for(int j = 0; j < height/rowHeight; j++){
-             int leftX = columnWidth * i + radius;
-             int rightX = columnWidth * (i + 1) - radius;
-             int topY = rowHeight * j + radius;
-             int bottomY = rowHeight * (j + 1) - radius;
-             int x = (int) random(leftX, rightX);
-             int y = (int) random(topY, bottomY);
-//             int x = (int) random(width);
-//             int y = (int) random(height);
-             ellipse(x, y, radius, radius);
-             initialPath.getCities().add(new Circle(x, y, radius, this));
-          }
-        }
+        initialPath = createInitialPath();
         // 1. Create first generation of random paths between cities in initialPath variable.
         parents = getFirstGeneration(initialPath);
         
@@ -146,11 +132,28 @@ import processing.event.MouseEvent;
           return new ArrayList<Path>(temp.subList(0, temp.size()/2));
       }
 
-
-public void mouseClick(){
-  noLoop();
+  Path createInitialPath(){
+    Path initPath = new Path(this);
+                for(int i = 0; i < width/columnWidth; i++){
+          for(int j = 0; j < height/rowHeight; j++){
+             int leftX = columnWidth * i + radius;
+             int rightX = columnWidth * (i + 1) - radius;
+             int topY = rowHeight * j + radius;
+             int bottomY = rowHeight * (j + 1) - radius;
+             int x = (int) random(leftX, rightX);
+             int y = (int) random(topY, bottomY);
+//             int x = (int) random(width);
+//             int y = (int) random(height);
+             initPath.getCities().add(new Circle(x, y, radius, this));
+          }
+        }
+        return initPath;
+  }
+public void mouseClicked(){
+  initialPath = createInitialPath();
+  // 1. Create first generation of random paths between cities in initialPath variable.
+  parents = getFirstGeneration(initialPath);
   children = createChildren(parents);
-  loop();
 }
 
 
