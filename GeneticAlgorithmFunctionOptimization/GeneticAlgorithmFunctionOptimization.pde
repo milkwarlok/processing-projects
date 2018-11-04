@@ -136,7 +136,7 @@ List<Integer> combineAndShrinkGenerations(List<Integer> parents, List<Integer> c
             public int compare(Integer o1, Integer o2) {
                 return new Float(Y_(o2)).compareTo(Y_(o1));
             }
-        });;
+        });
     //2. Take the top half.
     parents = parents.subList(0, parents.size()/2);
     return parents;
@@ -189,7 +189,7 @@ void mouseWheel(MouseEvent event) {
   break;
   }
 }
-  parents = generateFirstGeneration(10);
+  parents = generateFirstGeneration(generationSize);
   generationCount = 0;
   loop();
 }
