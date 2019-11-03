@@ -1,5 +1,6 @@
 float alpha;
 float alphaStep;
+int x_y_step = 150;
 int xStep;
 int yStep;
 ArrayList<Point> pointsTop;
@@ -13,9 +14,9 @@ noFill();
 
 alpha = 0.0;
 alphaStep = 0.001;
-xStep = 100;
-yStep = 100;
-radius = xStep/2;
+xStep = x_y_step;
+yStep = x_y_step;
+radius = xStep/4;
 
 pointsTop = new ArrayList<Point>();
 pointsLeft = new ArrayList<Point>();
